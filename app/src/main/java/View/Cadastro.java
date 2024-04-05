@@ -113,6 +113,10 @@ public class Cadastro extends javax.swing.JFrame {
                 return; // Retorna sem fazer o cadastro se o tipo de usuário não estiver selecionado
             }
             cadastroController.realizarCadastro(nome, senha, tipoUsuario); // Encaminha os dados para o controlador realizar o cadastro
+            TelaInicial telaInicial = new TelaInicial();
+            telaInicial.setVisible(true);
+            this.dispose();
+            
         }else{
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         }

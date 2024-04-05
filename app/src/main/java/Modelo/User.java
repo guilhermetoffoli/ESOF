@@ -1,7 +1,9 @@
 package Modelo;
 
+import java.io.Serializable;
 
-public class User {
+
+public class User implements Serializable{
     private String nome;
     private String senha;
     private String tipoUsuario;

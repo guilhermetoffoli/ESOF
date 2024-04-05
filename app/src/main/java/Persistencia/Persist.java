@@ -1,10 +1,12 @@
 package Persistencia;
 
+import Modelo.User;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class Persist {
     public static boolean gravar(Object a, String arquivo ){
@@ -27,10 +29,9 @@ public class Persist {
         }
     }
     
-    public static Object recuperar(String arquivo){
-        Object obj = null;
-        FileInputStream arquivoLeitura = null;
-        
+    public static ArrayList<User> recuperar(String arquivo){
+        ArrayList<User> usuarios = null;
+        FileInputStream arquivoLeitura = null;       
         ObjectInputStream objLeitura = null;
         
         try
@@ -40,7 +41,7 @@ public class Persist {
         //Classe responsavel por recuperar os objetos do arquivo
         objLeitura = new ObjectInputStream(arquivoLeitura);
         //Le o objeto
-        obj = objLeitura.readObject();
+        usuarios = (ArrayList<User>) objLeitura.readObject();
         objLeitura.close();
         arquivoLeitura.close();
         //observação: nào tem método flush()
@@ -48,6 +49,6 @@ public class Persist {
         catch( Exception e){
         return null;
         }
-        return obj;
+        return usuarios;
     } 
 }

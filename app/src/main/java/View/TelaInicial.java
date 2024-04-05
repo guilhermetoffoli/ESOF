@@ -1,6 +1,9 @@
 package View;
 
 import Controller.CadastroController;
+import Modelo.User;
+import Persistencia.DadosUsers;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TelaInicial extends javax.swing.JFrame {
@@ -147,7 +150,19 @@ public class TelaInicial extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Tipo de usuário não selecionado!");
             }
-            
+            User usuario = new User(nome, senha, tipoUsuario);
+            if(DadosUsers.validacaoUsuario(usuario)){
+               JOptionPane.showMessageDialog(this, "Usuário Encontrado");
+               if(tipoUsuario.equals("Dono do Produto")){
+                   DonoDoProdutoView donoDoProdutoView = new DonoDoProdutoView();
+                   donoDoProdutoView.setVisible(true);
+                   dispose();
+               }else if(tipoUsuario.equals("Desenvolvedor")){
+                   
+               }
+            }else{
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado");
+            }
         }else{
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         }
