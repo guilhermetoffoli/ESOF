@@ -6,6 +6,7 @@ public class User {
     private String senha;
     private String tipoUsuario;
     
+    
     public User(String nome, String senha, String tipoUsuario) {
         this.nome = nome;
         this.senha = senha;

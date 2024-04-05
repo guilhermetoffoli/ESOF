@@ -138,14 +138,19 @@ public class TelaInicial extends javax.swing.JFrame {
         String nome = jTextField1.getText();
         String senha = new String(jPasswordField1.getPassword());
         
-        if (jRadioButton1.isSelected()) {
-            tipoUsuario = "Dono do Produto"; // Define o tipo de usuário como "Dono do Produto"
-        } else if (jRadioButton2.isSelected()) {
-            tipoUsuario = "Desenvolvedor"; // Define o tipo de usuário como "Desenvolvedor"
-        } else {
-            JOptionPane.showMessageDialog(this, "Tipo de usuário não selecionado!");
+        if(!nome.isEmpty() && !senha.isEmpty()){
+            
+            if (jRadioButton1.isSelected()) {
+                tipoUsuario = "Dono do Produto"; // Define o tipo de usuário como "Dono do Produto"
+            } else if (jRadioButton2.isSelected()) {
+                tipoUsuario = "Desenvolvedor"; // Define o tipo de usuário como "Desenvolvedor"
+            } else {
+                JOptionPane.showMessageDialog(this, "Tipo de usuário não selecionado!");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         }
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

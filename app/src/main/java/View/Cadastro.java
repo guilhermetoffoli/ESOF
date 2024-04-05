@@ -97,21 +97,25 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nome = jTextField1.getText();
-        String senha = jTextField2.getText();
-        String tipoUsuario;
-        if (jRadioButton1.isSelected()) {
-            tipoUsuario = "Dono do Produto"; // Define o tipo de usuário como "Dono do Produto"
-        } else if (jRadioButton2.isSelected()) {
-            tipoUsuario = "Desenvolvedor"; // Define o tipo de usuário como "Desenvolvedor"
-        } else {
-            JOptionPane.showMessageDialog(this, "Tipo de usuário não selecionado!");
-            return; // Retorna sem fazer o cadastro se o tipo de usuário não estiver selecionado
-        }
         
-        // Encaminha os dados para o controlador realizar o cadastro
-        cadastroController.realizarCadastro(nome, senha, tipoUsuario);
-       
+        String nome = jTextField1.getText();
+        String senha = jTextField2.getText();      
+        
+        if (!nome.isEmpty() && !senha.isEmpty()){
+        
+            String tipoUsuario;
+            if (jRadioButton1.isSelected()) {
+                tipoUsuario = "Dono do Produto"; // Define o tipo de usuário como "Dono do Produto"
+            } else if (jRadioButton2.isSelected()) {
+                tipoUsuario = "Desenvolvedor"; // Define o tipo de usuário como "Desenvolvedor"
+            } else {
+                JOptionPane.showMessageDialog(this, "Tipo de usuário não selecionado!");
+                return; // Retorna sem fazer o cadastro se o tipo de usuário não estiver selecionado
+            }
+            cadastroController.realizarCadastro(nome, senha, tipoUsuario); // Encaminha os dados para o controlador realizar o cadastro
+        }else{
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -160,11 +164,5 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
-    
-    public void avisoDeNaoPreenchido(Cadastro cadastro){
-        JOptionPane.showMessageDialog(this, "Preencha os campos!");
-    }
-    public void tipoDeUsuarioNaoSelecionado(Cadastro cadastro){
-        JOptionPane.showMessageDialog(this, "Tipo de usuário não selecionado!");
-    }
+
 }
