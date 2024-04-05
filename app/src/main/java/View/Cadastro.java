@@ -5,7 +5,7 @@ import Controller.CadastroController;
 
 public class Cadastro extends javax.swing.JFrame {
 
-    private CadastroController cadastroController ;
+    private CadastroController cadastroController = new CadastroController();
 
     public Cadastro() {
         initComponents();
