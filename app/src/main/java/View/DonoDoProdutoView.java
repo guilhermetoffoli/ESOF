@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import javax.swing.JPopupMenu;
 
-/**
- *
- * @author Guilherme
- */
 public class DonoDoProdutoView extends javax.swing.JFrame {
 
     /**
@@ -45,6 +37,11 @@ public class DonoDoProdutoView extends javax.swing.JFrame {
         });
 
         jButton3.setText("Projeto");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Sprint");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +110,13 @@ public class DonoDoProdutoView extends javax.swing.JFrame {
         
         JPopupMenu popupMenu = new JPopupMenu("OOOOOOOi");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // PROJETO
+        ProjetoDPView projetoDPView = new ProjetoDPView();
+        projetoDPView.setVisible(true);
+        dispose();             
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

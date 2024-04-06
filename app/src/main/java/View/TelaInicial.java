@@ -3,7 +3,6 @@ package View;
 import Controller.CadastroController;
 import Modelo.User;
 import Persistencia.DadosUsers;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TelaInicial extends javax.swing.JFrame {

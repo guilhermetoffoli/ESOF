@@ -29,8 +29,8 @@ public class Persist {
         }
     }
     
-    public static ArrayList<User> recuperar(String arquivo){
-        ArrayList<User> usuarios = null;
+    public static Object recuperar(String arquivo){
+        Object obj = null;
         FileInputStream arquivoLeitura = null;       
         ObjectInputStream objLeitura = null;
         
@@ -41,7 +41,7 @@ public class Persist {
         //Classe responsavel por recuperar os objetos do arquivo
         objLeitura = new ObjectInputStream(arquivoLeitura);
         //Le o objeto
-        usuarios = (ArrayList<User>) objLeitura.readObject();
+        obj = (ArrayList<User>) objLeitura.readObject();
         objLeitura.close();
         arquivoLeitura.close();
         //observação: nào tem método flush()
@@ -49,6 +49,6 @@ public class Persist {
         catch( Exception e){
         return null;
         }
-        return usuarios;
+        return obj;
     } 
 }
