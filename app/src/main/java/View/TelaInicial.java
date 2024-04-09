@@ -1,6 +1,6 @@
 package View;
 
-import Controller.CadastroController;
+import Controller.*;
 import Modelo.User;
 import Persistencia.DadosUsers;
 import javax.swing.JOptionPane;
@@ -9,6 +9,7 @@ public class TelaInicial extends javax.swing.JFrame {
     
     private Cadastro cadastro;
     private CadastroController cadastroController;
+    private ProjetoController projetoController = new ProjetoController();
     
     private String tipoUsuario;
     /**
@@ -122,6 +123,7 @@ public class TelaInicial extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -159,7 +161,7 @@ public class TelaInicial extends javax.swing.JFrame {
                    donoDoProdutoView.setVisible(true);
                    dispose();
                }else if(tipoUsuario.equals("Desenvolvedor")){
-                   DesenvolvedorView desenvolvedorView = new DesenvolvedorView();
+                   DesenvolvedorView desenvolvedorView = new DesenvolvedorView(projetoController);
                    desenvolvedorView.setVisible(true);
                    dispose();
                }

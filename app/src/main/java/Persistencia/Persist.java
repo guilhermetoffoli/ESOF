@@ -47,7 +47,7 @@ public class Persist {
         //observação: nào tem método flush()
         }
         catch( Exception e){
-        return null;
+        e.printStackTrace();
         }
         return obj;
     } 

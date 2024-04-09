@@ -1,6 +1,8 @@
 package Modelo;
 
-public class Historia {
+import java.io.Serializable;
+
+public class Historia implements Serializable{
     private String id;
     private String titulo;
     private String descricao;
@@ -15,8 +17,6 @@ public class Historia {
         this.estado = estado;
     }
 
-    
-    
     public String getId() {
         return id;
     }

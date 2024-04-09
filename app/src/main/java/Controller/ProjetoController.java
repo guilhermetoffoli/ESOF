@@ -15,11 +15,11 @@ public class ProjetoController {
     }
     
     
-    
     public Projeto adicionarProjeto(String nomeProjeto, String descricao){
         ArrayList<User> Equipe = new ArrayList<>();
         ArrayList<Historia> historiaLista = new ArrayList<>();
-        Projeto novoprojeto = new Projeto(DadosProjeto.gerarID(), nomeProjeto, descricao, DadosProjeto.obterHoraProjeto(), Equipe, historiaLista);
+        ArrayList<Sprint> sprintLista = new ArrayList<>();
+        Projeto novoprojeto = new Projeto(DadosProjeto.gerarID(), nomeProjeto, descricao, System.currentTimeMillis(), Equipe, historiaLista, sprintLista);
         DadosProjeto.inserirProjeto(novoprojeto);
         
         return novoprojeto;

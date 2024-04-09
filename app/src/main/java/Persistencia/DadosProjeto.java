@@ -2,7 +2,6 @@ package Persistencia;
 
 import Modelo.*;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,9 +14,7 @@ public class DadosProjeto {
         if(projetoList == null)
             projetoList = new ArrayList<>();
     }
-    
-    
-    
+     
     public static ArrayList<Projeto> getProjetos() {
         return projetoList;
     }
@@ -30,12 +27,28 @@ public class DadosProjeto {
     
     public static void inserirEquipe(User dev){
         equipeProjeto.add(dev);
-        boolean r = Persist.gravar(dev, "equipeProjeto.dat");
+        boolean r = Persist.gravar(equipeProjeto, "equipeProjeto.dat");
     }  
     
     public static void inserirProjeto(Projeto projeto){
         projetoList.add(projeto);
-        boolean r = Persist.gravar(projeto, "Projetos.dat");
+        boolean r = Persist.gravar(projetoList, "Projetos.dat");
+    }
+    
+    public static void inserirHistoria(String nome, Historia historia){
+        for(Projeto projeto : projetoList){
+            if(projeto.getNome().equals(nome)){
+                projeto.getHistoriaLista().add(historia);
+            }
+        }
+    }
+    
+    public static void inserirSprint(String nome, Sprint sprint){
+        for(Projeto projeto : projetoList){
+            if(projeto.getNome().equals(nome)){
+                projeto.getSprintLista().add(sprint);
+            }
+        }
     }
     
     public static String gerarID() {
@@ -54,12 +67,4 @@ public class DadosProjeto {
 
         return sb.toString();
     }
-    
-    public static LocalTime obterHoraProjeto() {   
-        // Obtendo a hora atual
-        LocalTime horaAtual = LocalTime.now();
-
-        return horaAtual;
-    }
-    
 }

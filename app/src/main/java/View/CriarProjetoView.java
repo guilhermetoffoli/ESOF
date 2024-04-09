@@ -6,9 +6,11 @@ import Modelo.Projeto;
 public class CriarProjetoView extends javax.swing.JFrame {
 
     ProjetoController projetoController = new ProjetoController();
-    ProjetoDPView projetoDpView = new ProjetoDPView(projetoController);
-    public CriarProjetoView() {
-        initComponents();
+    
+    ProjetoDPView projetoDpView;
+    public CriarProjetoView(ProjetoDPView projetoDpView) {
+        this.projetoDpView = projetoDpView;
+        initComponents();     
     }
 
     /**
@@ -81,6 +83,7 @@ public class CriarProjetoView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -92,8 +95,7 @@ public class CriarProjetoView extends javax.swing.JFrame {
         Projeto projeto = projetoController.adicionarProjeto(nomeProjeto, descricao);
         
         projetoDpView.adicionarProjetosAoComboBox(projeto);
-        
-        projetoDpView.revalidarComboBox();
+  
         
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

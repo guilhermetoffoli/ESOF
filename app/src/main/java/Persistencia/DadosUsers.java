@@ -8,6 +8,7 @@ public class DadosUsers {
     
     static{
         usersList = (ArrayList<User>)Persist.recuperar("usuarios.dat");
+        System.out.println(usersList); 
         if(usersList == null)
             usersList = new ArrayList<User>();
     }
@@ -18,7 +19,7 @@ public class DadosUsers {
     
     public static void cadastrar(User u){
         usersList.add(u);
-        boolean r = Persist.gravar(u, "usuarios.dat");
+        boolean r = Persist.gravar(usersList, "usuarios.dat");
     }
     
     public static boolean validacaoUsuario(User user) {

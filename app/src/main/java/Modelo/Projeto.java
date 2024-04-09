@@ -1,34 +1,42 @@
 package Modelo;
 
-import java.time.LocalTime;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Projeto {
+public class Projeto implements Serializable{
     private String id;
     private String nome;
     private String descricao;
-    private LocalTime criadoEm;
+    private long criadoEm;
     private ArrayList<Historia> historiaLista;
+    private ArrayList<Sprint> sprintLista;
     private ArrayList<User> equipeProjeto;
 
-    public Projeto(String id, String nome, String descricao, LocalTime criadoEm, ArrayList<User> equipeProjeto,ArrayList<Historia> historiaLista) {
-        this.id = id;
+    public Projeto(String id, String nome, String descricao, long criadoEm, ArrayList<User> equipeProjeto, ArrayList<Historia> historiaLista, ArrayList<Sprint> sprintLista) {
+        this.id = id; 
         this.nome = nome;
         this.descricao = descricao;
         this.criadoEm = criadoEm;
         this.equipeProjeto = new ArrayList<>();
         this.historiaLista = new ArrayList<>();
+        this.sprintLista = new ArrayList<>();
     } 
 
+    public ArrayList<Sprint> getSprintLista() {
+        return sprintLista;
+    }
+
+    public void setSprintLista(ArrayList<Sprint> sprintLista) {
+        this.sprintLista = sprintLista;
+    }
+    
     public ArrayList<Historia> getHistoriaLista() {
         return historiaLista;
     }
 
     public void setHistoriaLista(ArrayList<Historia> historiaLista) {
         this.historiaLista = historiaLista;
-    }
-    
-    
+    }  
     
     public ArrayList<User> getEquipeProjeto() {
         return equipeProjeto;
@@ -62,13 +70,12 @@ public class Projeto {
         this.descricao = descricao;
     }
 
-    public LocalTime getCriadoEm() {
+    public long getCriadoEm() {
         return criadoEm;
     }
 
-    public void setCriadoEm(LocalTime criadoEm) {
+    public void setCriadoEm(long criadoEm) {
         this.criadoEm = criadoEm;
     }
-    
-    
+
 }
