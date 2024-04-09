@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Modelo.Projeto;
-import Persistencia.DadosProjeto;
+import Controller.ProjetoController;
+import Modelo.*;
+import Persistencia.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+
 public class ProjetoDPView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ProjetoDPView
-     */
-    public ProjetoDPView() {
+    private CriarProjetoView criarProjetoView;
+    private ProjetoController projetoController;
+    
+
+    public ProjetoDPView(ProjetoController projetoController) {
+        this.projetoController = projetoController;
         initComponents();
     }
 
@@ -27,21 +27,15 @@ public class ProjetoDPView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("Visualizar Projetos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Criar Projeto");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -53,10 +47,23 @@ public class ProjetoDPView extends javax.swing.JFrame {
         jButton3.setText("Criar Sprint");
 
         jButton4.setText("Desenvolvedores");
-
-        jButton5.setText("Alterar Projeto");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("PÁGINA DO PROJETO");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,38 +72,42 @@ public class ProjetoDPView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(82, 82, 82)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(224, 224, 224)
-                        .addComponent(jLabel1)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(169, 169, 169)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(41, 41, 41)
-                .addComponent(jButton5)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton2)
+                        .addGap(50, 50, 50)
+                        .addComponent(jButton4)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,68 +115,92 @@ public class ProjetoDPView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // CRIAR PROJETO
-        CriarProjetoView criarProjetoView = new CriarProjetoView();
+        criarProjetoView = new CriarProjetoView();
         criarProjetoView.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // VISUALIZAR PROJETOS
-    DadosProjeto dadosProjeto = new DadosProjeto();
-    ArrayList<Projeto> projetos = dadosProjeto.getProjetos();
-    
-    StringBuilder sb = new StringBuilder();
-    for (Projeto projeto : projetos) {
-        sb.append("ID: ").append(projeto.getId()).append("\n");
-        sb.append("Descrição: ").append(projeto.getDescricao()).append("\n");
-        sb.append("\n");
-    }
-
-    // Exibir as informações em uma caixa de diálogo
-    JOptionPane.showMessageDialog(this, sb.toString(), "Detalhes dos Projetos", JOptionPane.INFORMATION_MESSAGE);
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        //Desenvolvedores ARRUMAR ENVIAR PARA O CONTROLE
         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        DadosUsers dadosUsers = new DadosUsers();
+        ArrayList<User> desenvolvedores = DadosUsers.getUsersList();
+        
+        StringBuilder sb = new StringBuilder();
+            for (User dev : desenvolvedores) {
+            if(dev.getTipoUsuario().equals("Desenvolvedor")){
+                sb.append("Nome: ").append(dev.getNome()).append("\n");
+                sb.append("Tipo: ").append(dev.getTipoUsuario()).append("\n");
+                sb.append("\n");
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProjetoDPView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProjetoDPView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProjetoDPView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProjetoDPView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+            
+        JOptionPane.showMessageDialog(this, sb.toString(), "Funcionários", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProjetoDPView().setVisible(true);
-            }
-        });
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+      
+
+        jTextArea1.setEditable(false);
+        String projetoSelecionado = (String) jComboBox1.getSelectedItem();
+        Projeto detalhesProjeto = projetoController.getProjetoNome(projetoSelecionado);
+        
+        jTextArea1.setText(exibirDetalhesProjeto(detalhesProjeto));
+
+        pack();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    public void adicionarProjetosAoComboBox(Projeto projetos) {
+
+        jComboBox1.addItem(projetos.getNome());
+
     }
+    
+    public String exibirDetalhesProjeto(Projeto projetos){
+        StringBuilder detalhes = new StringBuilder();
+        detalhes.append("ID: ").append(projetos.getId()).append("\n");
+        detalhes.append("Nome: ").append(projetos.getNome()).append("\n");
+        detalhes.append("Descrição: ").append(projetos.getDescricao()).append("\n");
+        detalhes.append("Criado em: ").append(projetos.getCriadoEm()).append("\n");
+
+        if (!projetos.getHistoriaLista().isEmpty()) {
+            detalhes.append("Histórias do Projeto:\n");
+            for (Historia historia : projetos.getHistoriaLista()) {
+                detalhes.append("   - ").append(historia.getTitulo()).append(": ").append(historia.getDescricao()).append("\n");
+                detalhes.append("Prioridade: ").append(historia.getPrioridade()).append("\n");
+                detalhes.append("Estado: ").append(historia.getEstado()).append("\n");
+            }
+        } else {
+            detalhes.append("Este projeto ainda não tem histórias associadas.\n");
+        }
+
+        if (!projetos.getEquipeProjeto().isEmpty()) {
+            detalhes.append("Equipe do Projeto:\n");
+            for (User desenvolvedor : projetos.getEquipeProjeto()) {
+                detalhes.append("   - ").append(desenvolvedor.getNome()).append(": ").append(desenvolvedor.getTipoUsuario()).append("\n");
+            }
+        } else {
+            detalhes.append("Este projeto ainda não tem uma equipe alocada.\n");
+        }
+
+        return detalhes.toString();
+    }
+
+    public void revalidarComboBox(){
+        for (Projeto projeto : DadosProjeto.getProjetos()) {
+            jComboBox1.addItem(projeto.getNome());
+        }
+        jComboBox1.revalidate();
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

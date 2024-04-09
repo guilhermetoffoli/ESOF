@@ -1,24 +1,25 @@
 package Persistencia;
 
-import Modelo.Projeto;
-import Modelo.User;
+import Modelo.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class DadosProjeto {
     private static ArrayList<User> equipeProjeto;
-    private static ArrayList<Projeto> projetos;
+    private static ArrayList<Projeto> projetoList;
 
     static{
-        projetos = (ArrayList<Projeto>)Persist.recuperar("Projetos.dat");
-        if(projetos == null)
-            projetos = new ArrayList<Projeto>();
+        projetoList = (ArrayList<Projeto>)Persist.recuperar("Projetos.dat");
+        if(projetoList == null)
+            projetoList = new ArrayList<>();
     }
     
+    
+    
     public static ArrayList<Projeto> getProjetos() {
-        return projetos;
+        return projetoList;
     }
     
     //Metodos de adicionar na equipe 
@@ -33,7 +34,7 @@ public class DadosProjeto {
     }  
     
     public static void inserirProjeto(Projeto projeto){
-        projetos.add(projeto);
+        projetoList.add(projeto);
         boolean r = Persist.gravar(projeto, "Projetos.dat");
     }
     
@@ -54,11 +55,9 @@ public class DadosProjeto {
         return sb.toString();
     }
     
-    public static LocalDateTime obterHoraProjeto() {
+    public static LocalTime obterHoraProjeto() {   
         // Obtendo a hora atual
-        LocalDateTime horaAtual = LocalDateTime.now();
-
-        // Formatando a hora no formato desejado (HH:mm:ss)
+        LocalTime horaAtual = LocalTime.now();
 
         return horaAtual;
     }
